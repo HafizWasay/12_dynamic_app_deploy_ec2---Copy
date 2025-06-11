@@ -48,6 +48,15 @@
             group: ubuntu
             mode: "0600"
 
+      - name: Ensure /opt/todo-app exists and is owned by ubuntu
+        become: true
+        ansible.builtin.file:
+          path: /opt/todo-app
+          state: directory
+          owner: ubuntu
+          group: ubuntu
+          mode: '0755'
+
       - name: Clone or update private todo-app repo via SSH
         become: true
         become_user: ubuntu
