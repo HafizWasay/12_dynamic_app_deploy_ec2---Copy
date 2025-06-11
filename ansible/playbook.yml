@@ -28,56 +28,7 @@
         become_user: ubuntu
         ansible.builtin.copy:
           dest: /home/ubuntu/.ssh/id_rsa
-          content: |
-            -----BEGIN OPENSSH PRIVATE KEY-----
-            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
-            -----END OPENSSH PRIVATE KEY-----
+          content: "{{ lookup('env', 'REPO_SSH_KEY')}}"
           mode: '0600'
 
       - name: Add GitHub.com to known_hosts for ubuntu
@@ -86,16 +37,23 @@
         ansible.builtin.known_hosts:
           path: /home/ubuntu/.ssh/known_hosts
           name: github.com
-          key: "{{ lookup('pipe', 'ssh-keyscan -H github.com') }}"
+          key: "{{ lookup('pipe', 'ssh-keyscan github.com') }}"
 
+      - name: Ensure .ssh directory exists
+        become: true
+        become_user: ubuntu
+        file:
+          path: /home/ubuntu/.ssh
+          state: directory
+          mode: '0700'
 
-      - name: Copy SSH key for ubuntu (reuse EC2_SSH_KEY)
+      - name: Copy private SSH key
+        become: true
+        become_user: ubuntu
         copy:
-            dest: /home/ubuntu/.ssh/id_rsa
-            content: "{{ lookup('env','REPO_SSH_KEY') }}"
-            owner: ubuntu
-            group: ubuntu
-            mode: "0600"
+          dest: /home/ubuntu/.ssh/id_rsa
+          content: "{{ lookup('env', 'REPO_SSH_KEY') }}"
+          mode: '0600'
 
       - name: Ensure /opt/todo-app exists and is owned by ubuntu
         become: true
