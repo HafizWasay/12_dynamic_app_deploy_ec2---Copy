@@ -9,11 +9,13 @@
       ghcr_token: "{{ lookup('env','GHCR_TOKEN') }}"
 
   tasks:
-      - name: Ensure .ssh/known_hosts for ubuntu
-        become_user: ubuntu
-        known_hosts:
-          name: github.com
+      - name: Add host to known_hosts
+        ansible.builtin.known_hosts:
           path: /home/ubuntu/.ssh/known_hosts
+          name: "{{ inventory_hostname }}"
+          key: "{{ lookup('pipe', 'ssh-keyscan -H ' + inventory_hostname) }}"
+          state: present
+
 
       - name: Install Git if missing
         ansible.builtin.apt:
