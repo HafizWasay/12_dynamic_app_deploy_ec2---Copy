@@ -143,5 +143,12 @@
             tag: latest
             source: pull
 
+      - name: Copy .env file
+        copy: 
+          src: .env
+          dest: /opt/todo-app/.env
+
       - name: Deploy Docker Swarm stack
         shell: docker stack deploy -c /opt/todo-app/docker-stack.yml todo-app
+        args:
+          chdir: /opt/todo-app

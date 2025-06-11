@@ -105,6 +105,14 @@ jobs:
                   ${{ needs.terraform.outputs.manager_ip }} ansible_user=ubuntu
                   EOF
 
+            - name: Create .env file for Docker stack
+              run: |
+                cat > .env <<EOF
+                DATABASE_URL=${{ secrets.NEON_DATABASE_URL }}
+                FRONTEND_URL=http://${{ needs.terraform.outputs.manager_ip }}:3000
+                NEXT_PUBLIC_API_URL=http://${{ needs.terraform.outputs.manager_ip }}:8000
+                EOF
+
             - name: Install Ansible & plugin
               run: |
                   sudo apt-get update
