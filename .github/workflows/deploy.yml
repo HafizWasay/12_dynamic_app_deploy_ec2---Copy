@@ -120,4 +120,4 @@ jobs:
                   ansible-playbook \
                     -i ansible/inventory.ini \
                     ansible/playbook.yml \
-                    --limit swarm
+                    --limit swarm -vvvv
