@@ -127,13 +127,13 @@
 
       - name: Pull latest backend image from GHCR
         community.docker.docker_image:
-            name: ghcr.io/{{ ghcr_user }}/fastapi-todo
+            name: ghcr.io/{{ ghcr_user }}/ci-cd_assignment/fastapi-todo:latest
             tag: latest
             source: pull
 
       - name: Pull latest frontend image from GHCR
         community.docker.docker_image:
-            name: ghcr.io/{{ ghcr_user }}/todo-frontend
+            name: ghcr.io/{{ ghcr_user }}/ci-cd_assignment/todo-frontend:latest
             tag: latest
             source: pull
 
