@@ -9,13 +9,11 @@
       ghcr_token: "{{ lookup('env','GHCR_TOKEN') }}"
 
   tasks:
-      - name: Ensure .ssh directory for ubuntu
-        file:
-            path: /home/ubuntu/.ssh
-            state: directory
-            mode: "0700"
-            owner: ubuntu
-            group: ubuntu
+      - name: Ensure .ssh/known_hosts for ubuntu
+        become_user: ubuntu
+        known_hosts:
+          name: github.com
+          path: /home/ubuntu/.ssh/known_hosts
 
       - name: Install Git if missing
         ansible.builtin.apt:
