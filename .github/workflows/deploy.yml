@@ -68,14 +68,18 @@ jobs:
                       ghcr.io/${{ github.repository }}/fastapi-todo:latest
                   build-args: |
                       DATABASE_URL=${{ secrets.NEON_DATABASE_URL }}
+                      FRONTEND_URL=http://${{ needs.terraform.outputs.manager_ip }}:3000
+
 
             - name: Build & push frontend image
-              uses: docker/build-push-action@v6
+              uses: docker/build-push-action@v5
               with:
                   context: ./frontend
                   push: true
                   tags: |
                       ghcr.io/${{ github.repository }}/todo-frontend:latest
+                  build-args: |
+                      NEXT_PUBLIC_API_URL=http://${{ needs.terraform.outputs.manager_ip }}:8000
 
     deploy_stack:
         name: Deploy Stack

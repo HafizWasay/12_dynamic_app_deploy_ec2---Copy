@@ -1,8 +1,9 @@
 services:
     backend:
         image: ghcr.io/anusmemon226/ci-cd_assignment/fastapi-todo:latest
-        env_file:
-            - .env
+        environment:
+            - DATABASE_URL=${DATABASE_URL}
+            - FRONTEND_URL=${FRONTEND_URL}
         ports:
             - "8000:8000"
         deploy:
@@ -12,8 +13,8 @@ services:
                 delay: 5s
     frontend:
         image: ghcr.io/anusmemon226/ci-cd_assignment/todo-frontend:latest
-        env_file:
-            - .env
+        environment:
+            - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
         ports:
             - "3000:3000"
         depends_on:
