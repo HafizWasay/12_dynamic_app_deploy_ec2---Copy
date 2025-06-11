@@ -110,6 +110,12 @@
             name: docker-ce
             update_cache: yes
 
+      - name: Add ubuntu user to docker group
+        user:
+          name: ubuntu
+          groups: docker
+          append: yes
+
       - name: Ensure Docker is running
         service:
             name: docker
