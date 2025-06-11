@@ -35,8 +35,10 @@
         become: true
         become_user: ubuntu
         ansible.builtin.known_hosts:
-            path: /home/ubuntu/.ssh/known_hosts
-            name: github.com
+          path: /home/ubuntu/.ssh/known_hosts
+          name: github.com
+          key: "{{ lookup('pipe', 'ssh-keyscan -H github.com') }}"
+
 
       - name: Copy SSH key for ubuntu (reuse EC2_SSH_KEY)
         copy:
