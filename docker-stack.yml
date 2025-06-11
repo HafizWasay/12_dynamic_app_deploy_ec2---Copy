@@ -1,6 +1,6 @@
 services:
     backend:
-        image: anusmemon226/fastapi-todo:latest
+        image: anusmemon226/ci-cd_assignment/fastapi-todo:latest
         environment:
             - DATABASE_URL=${DATABASE_URL}
             - FRONTEND_URL=${FRONTEND_URL}
@@ -12,7 +12,7 @@ services:
                 parallelism: 1
                 delay: 5s
     frontend:
-        image: anusmemon226/todo-frontend:latest
+        image: anusmemon226/ci-cd_assignment/todo-frontend:latest
         environment:
             - NEXT_PUBLIC_API_URL=http://backend:8000
         ports:
