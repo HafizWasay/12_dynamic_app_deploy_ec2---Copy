@@ -11,9 +11,9 @@ import TodoTable from "@/components/TodoTable";
 import { Todo } from "@/../../types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
-console.log(API_URL)
 
 export default function HomePage() {
+	console.log(API_URL)
 	const queryClient = useQueryClient();
 	const [newText, setNewText] = useState("");
 
