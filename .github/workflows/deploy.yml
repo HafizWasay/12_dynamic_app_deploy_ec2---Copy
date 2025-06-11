@@ -88,7 +88,7 @@ jobs:
             - name: Setup SSH agent
               uses: webfactory/ssh-agent@v0.9.0
               with:
-                  ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+                  ssh-private-key: ${{ secrets.GH_DEPLOY_KEY }}
 
             - name: Add manager to known_hosts
               run: |
@@ -115,7 +115,7 @@ jobs:
               env:
                 GHCR_USER: ${{ github.repository_owner }}
                 GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                REPO_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+                REPO_SSH_KEY: ${{ secrets.GH_DEPLOY_KEY }}
               run: |
                   ansible-playbook \
                     -i ansible/inventory.ini \
