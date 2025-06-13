@@ -24,12 +24,12 @@
             update_cache: yes
 
       - name: Install private key for repo access
-        copy:
-            dest: /home/ubuntu/.ssh/id_rsa
-            content: "{{ lookup('env','REPO_SSH_KEY') }}"
-            owner: ubuntu
-            group: ubuntu
-            mode: "0600"
+        become: true
+        become_user: ubuntu
+        ansible.builtin.copy:
+          dest: /home/ubuntu/.ssh/id_rsa
+          content: "{{ lookup('env', 'REPO_SSH_KEY')}}"
+          mode: '0600'
 
       - name: Add GitHub.com to known_hosts for ubuntu
         become: true
@@ -66,7 +66,7 @@
 
       - name: Clone or update private todo-app repo via SSH
         git:
-          repo: git@github.com:anusmemon226/devops_assignment.git
+          repo: git@github.com:anusmemon226/ci-cd_assignment.git
           dest: /opt/todo-app
           version: main
           key_file: /home/ubuntu/.ssh/id_rsa
