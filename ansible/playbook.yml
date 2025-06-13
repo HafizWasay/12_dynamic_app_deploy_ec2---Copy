@@ -125,6 +125,11 @@
         copy:
           src: .env
           dest: /opt/todo-app/frontend/.env
+        
+      - name: Copy .env file to frontend
+        copy:
+          src: .env
+          dest: /opt/todo-app/backend/.env
 
       - name: Ensure Docker is running
         service:
