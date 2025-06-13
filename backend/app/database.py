@@ -3,7 +3,7 @@ from sqlmodel import SQLModel
 from sqlmodel.ext.asyncio.session import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = "postgresql+asyncpg://neondb_owner:npg_kZy6UBruXfV1@ep-broad-sky-a5aydyf7-pooler.us-east-2.aws.neon.tech/neondb"
 engine = create_async_engine(DATABASE_URL, echo=True)
 session = AsyncSession(engine)
 
