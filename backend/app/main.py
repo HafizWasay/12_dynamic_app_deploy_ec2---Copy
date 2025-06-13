@@ -12,7 +12,7 @@ print("Allowing CORS from:", frontend_url)  # Helpful for debugging
 # Don't allow "*" if you plan to use cookies or Authorization headers
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[frontend_url], 
+    allow_origins=["*"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
