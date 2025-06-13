@@ -155,6 +155,6 @@
 
       - name: Deploy Docker Swarm stack
         become: true
-        shell: docker stack deploy --env-file /opt/todo-app/.env -c /opt/todo-app/docker-stack.yml todo-app
+        shell: docker stack deploy -c /opt/todo-app/docker-stack.yml todo-app
         args:
           chdir: /opt/todo-app
