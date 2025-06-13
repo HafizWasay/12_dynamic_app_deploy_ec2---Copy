@@ -116,6 +116,16 @@
           groups: docker
           append: yes
 
+      - name: Copy .env file
+        copy: 
+          src: .env
+          dest: /opt/todo-app/.env
+      
+      - name: Copy .env file to frontend
+        copy:
+          src: .env
+          dest: /opt/todo-app/frontend/.env
+
       - name: Ensure Docker is running
         service:
             name: docker
@@ -143,18 +153,8 @@
             tag: latest
             source: pull
 
-      - name: Copy .env file
-        copy: 
-          src: .env
-          dest: /opt/todo-app/.env
-      
-      - name: Copy .env file to frontend
-        copy:
-          src: .env
-          dest: /opt/todo-app/frontend/.env
-
       - name: Deploy Docker Swarm stack
         become: true
-        shell: docker stack deploy -c /opt/todo-app/docker-stack.yml todo-app
+        shell: docker stack deploy --env-file /opt/todo-app/.env -c /opt/todo-app/docker-stack.yml todo-app
         args:
           chdir: /opt/todo-app
