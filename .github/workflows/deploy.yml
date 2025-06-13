@@ -68,7 +68,6 @@ jobs:
                     ghcr.io/${{ github.repository }}/fastapi-todo:latest
                   build-args: |
                     DATABASE_URL=${{ secrets.NEON_DATABASE_URL }}
-                    FRONTEND_URL=http://${{ needs.terraform.outputs.manager_ip }}:3000
 
 
             - name: Build & push frontend image
