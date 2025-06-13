@@ -53,6 +53,7 @@ export default function HomePage() {
 
 	return (
 		<div className="min-h-screen bg-gray-50 flex flex-col items-center py-10">
+			<h1>API - {API_URL}</h1>
 			<Card className="w-full max-w-xl">
 				<CardHeader>
 					<CardTitle>Todo App</CardTitle>
