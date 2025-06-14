@@ -12,7 +12,7 @@ on:
 jobs:
     terraform:
         name: Create Cloud Infrastructure
-        runs-on: self-hosted
+        runs-on: ubuntu-latest
         outputs:
             manager_ip: ${{ steps.extract_ip.outputs.manager_ip }}
         steps:
